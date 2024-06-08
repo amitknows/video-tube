@@ -3,10 +3,21 @@
 // import { DB_NAME } from "./constants";
 
 import connectDB from "./db/index.js";
+import express from 'express'
+
+const app =express()
 
 
 
 connectDB()
+.then(()=>{
+  app.listen(process.env.PORT || 8000, () => {
+    console.log(` 🛠️  App is listening on localhost:${process.env.PORT}`);
+  });
+})
+.catch((error)=>{
+  console.log('MongoDB connection FAILED!!!!', error)
+})
 
 
 
