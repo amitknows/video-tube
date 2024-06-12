@@ -39,7 +39,7 @@ const userSchema = new Schema({
     },
     refreshToken:{            // jwt- it create tokens
         type:String,
-        required:true,
+        
     },
     watchHistory:[        //mongoose-aggregate-paginate-v2
         {
