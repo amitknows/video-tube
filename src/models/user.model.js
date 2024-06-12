@@ -1,5 +1,4 @@
-import { Schema } from "mongoose";
-import mongoose from mongoose;
+import mongoose, { Schema } from "mongoose";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';// interview- jwt is a bearer token. Like a key of house. Jiske pas h wahi access kar sakta hai.
 
@@ -52,7 +51,7 @@ const userSchema = new Schema({
 
 userSchema.pre('save', async function(next){                //do not use arrow function here. arrow function doesnot have access to this keyword
     if(!this.isModified("password")) return next();
-    this.password = bcrypt.hash(this.password, 10)         // mujhe lgta h yaha await lagega
+    this.password = await bcrypt.hash(this.password, 10)         // mujhe lgta h yaha await lagega *Logic Building 42:30 sir ko bhi lga
     next();
 })
 
