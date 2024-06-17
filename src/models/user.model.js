@@ -57,7 +57,7 @@ userSchema.pre('save', async function(next){                //do not use arrow f
 
 
 
-userSchema.methods.isPassword = async function (password){    // using 'methods' we can define our own custom methods
+userSchema.methods.isPasswordCorrect = async function (password){    // using 'methods' we can define our own custom methods
    return await bcrypt.compare(password,this.password)
 }
 
@@ -65,7 +65,7 @@ userSchema.methods.isPassword = async function (password){    // using 'methods'
 
 
 userSchema.methods.generateAccessToken= function(){
-    jwt.sign(
+  return  jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -79,7 +79,7 @@ userSchema.methods.generateAccessToken= function(){
     )
 }
 userSchema.methods.generateRefreshToken= function(){
-    jwt.sign(
+  return  jwt.sign(
         {
             _id: this._id,
           
