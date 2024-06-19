@@ -1,0 +1,1 @@
+// TODO : in user.controller.js after updating avatar and coverImage , delete the old imgaes after updating new images
